@@ -1,14 +1,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: sample-service-1
-  title: Service 1
+  name: hello-world-grpc-definition
+  title: Hello World Service
   description: |
-    A service for testing Backstage functionality. Configured for GitHub Actions and
-    Sentry.
+    Sample hello-world-grpc-defintion for IAS Codefest 2022
   links:
-    - url: https://www.notion.so/roadie/Sample-Service-e067465e56a14ae9b0507f8559f6aa26
-      title: Datadog
+    - url: https://www.example.com
+      title: ArtVadelay 
       icon: dashboard
   annotations:
     github.com/project-slug: RoadieHQ/sample-service
@@ -35,81 +34,5 @@ spec:
     - Component:sample-service-2
     - Resource:sample-s3-bucket
 
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  title: Sentry JS
-  name: sentry-js
-  description: A JS client which communicates with the Sentry HTTP API.
-spec:
-  type: library
-  lifecycle: production
-  owner: sample-team
-  system: sample-system
-  subcomponentOf: sample-service-1
 
----
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  title: Sample Service API
-  name: sample-service
-  description: The Sample Service API allows you to send errors to Rollbar or Sentry.
-  tags:
-    - unstable
-spec:
-  type: openapi
-  lifecycle: production
-  owner: sample-team
-  system: sample-system
-  definition:
-    $text: https://github.com/RoadieHQ/sample-service/blob/main/api-spec.yaml
 
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: sample-s3-bucket
-  description: The s3 bucket with the sample data in it. Doesn't really exist.
-spec:
-  type: s3-bucket
-  owner: sample-team
-  system: sample-system
-
----
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: sample-domain
-  description: Sample domain which has stuff for demoing.
-spec:
-  owner: sample-team
-
----
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  title: Sample System
-  name: sample-system
-  description: Sample things which are good for demoing.
-spec:
-  owner: sample-team
-  domain: sample-domain
-
----
-apiVersion: backstage.io/v1alpha1
-kind: Group
-metadata:
-  name: yaml-team
-  title: YAML team
-  description: A team which is defined in YAML
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: team
-  profile:
-    displayName: YAML team
-    email: team-alpha@example.com
-    picture: https://avatars.dicebear.com/api/identicon/team-alpha@example.com.svg?background=%23fff&margin=25
-  children: []
